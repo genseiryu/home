@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+  <title>Genseiryu Karate - Inhoud</title>
+
+  
+
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+  
+  <meta name="author" content="Mario Roering">
+
+  
+  <meta name="Generator" content="Designer:Mario Roering">
+
+  
+  <meta name="description" content="Genseiryu Karate. In Dutch and English, description of Shihoo, Kata and techniques. 
+  Also the history of karate and Genseiryu... And much more (to come)...">
+
+  
+  <meta name="KeyWords" content="Genseiryu, Gensei-ryu, karate, gensei, ryu, history, shihoo, kata">
+<!-- Ga naar regel 170 voor de opbouw van de pagina -->
+
+  
+
+  
+  <style type="text/css">
+    #divCont {position:absolute; z-index:1; left:8px; top:230px;                /*** TOP = vertical position!!! ***/
+	                             height:400px; width:162px; visibility:hidden;}     
+    .clTop   {position:absolute; z-index:1; width:162px; line-height:18px;}
+    .clSub   {position:absolute; z-index:1; left:7px; top:20px; width:162px; line-height:16px;}
+    .clNoSub  {position:absolute; z-index:1; left:7x; top:20px; width:162px; line-height:0px;}
+
+    /*** This sets the style for the LINKS inside the menu!!! ***/
+    #divCont .clTop a {color:#3333aa; font-family:verdana,arial,helvetica,sans-serif; font-size:12px; font-weight:bold; text-decoration:none;}
+    #divCont .clTop a:hover {color:#6677FF; text-decoration:none;}
+    #divCont .clTop .clSub a {color:#3333aa; font-family:verdana,arial,helvetica,sans-serif; font-size:10px; font-weight:normal; text-decoration:none;}
+    #divCont .clTop .clSub a:hover {color:#6677FF; text-decoration:none;}  
+  </style>
+  
+  <script language="JavaScript" type="text/javascript">
+
+  function lib_bwcheck(){ //Browsercheck (needed)
+	this.ver=navigator.appVersion
+	this.agent=navigator.userAgent
+	this.dom=document.getElementById?1:0
+	this.opera5=this.agent.indexOf("Opera 5")>-1
+	this.ie5=(this.ver.indexOf("MSIE 5")>-1 && this.dom && !this.opera5)?1:0; 
+	this.ie6=(this.ver.indexOf("MSIE 6")>-1 && this.dom && !this.opera5)?1:0;
+        this.ie7=(this.ver.indexOf("MSIE 7")>-1 && this.dom && !this.opera5)?1:0; 
+	this.ie4=(document.all && !this.dom && !this.opera5)?1:0;
+	this.ie=this.ie4||this.ie5||this.ie6||this.ie7
+	this.mac=this.agent.indexOf("Mac")>-1
+	this.ns6=(this.dom && parseInt(this.ver) >= 5) ?1:0; 
+	this.ns4=(document.layers && !this.dom)?1:0;
+	this.bw=(this.ie7 || this.ie6 || this.ie5 || this.ie4 || this.ns4 || this.ns6 || this.opera5)
+	return this
+    }
+  var bw=new lib_bwcheck()
+
+
+  /*** Variables you can configure ***/
+
+  FoldNumber = 14					//How many toplinks do you have?
+  var stayFolded = false			//Stay open when you click a new toplink?
+  foldImg = 0						//Do you want images (if not set to 0 and remove the images from the body)?
+  mainOffsetY = 0					//Vertical space adjustment between the main items, in pixels.
+
+  //This is the default image.
+  //Remember to change the actual images in the page as well, but remember to keep the name of the image.
+  var unImg=new Image();
+  unImg.src='foldoutmenu_arrow.gif'
+
+  var exImg=new Image();					//Making an image variable...
+  exImg.src='foldoutmenu_arrow_open.gif'	//...this is the source of the image that it changes to when the menu expands.
+
+  // NOTE: if you change the position of divCont from absolute to relative, you can put the foldoutmenu in a table.
+  // HOWEVER it will no longer work in netscape 4. If you wish to support netscape 4, you have to use absolute positioning.
+
+  
+   /*** There should be no need to change anything beyond this. ***/
+
+  // A unit of measure that will be added when setting the position of a layer.
+  var px = bw.ns4||window.opera?"":"px";
+
+  if(navigator.userAgent.indexOf('Opera')>-1 && document.getElementById){ //Opera 5 resize fix.
+	scrX= innerWidth; scrY= innerHeight;
+	document.onmousemove= function(){
+		if(scrX<innerWidth-10 || scrY<innerHeight-10 || scrX>innerWidth+10 || scrY>innerHeight+10){
+			scrX = innerWidth;
+			scrY = innerHeight;
+			initFoldout();
+		}
+	};
+  }
+
+  //object constructor...
+  function makeMenu(obj,nest){
+	nest= (!nest)?"":'document.'+nest+'.';
+	this.el= bw.ie4?document.all[obj]:bw.ns4?eval(nest+'document.'+obj):document.getElementById(obj);	
+   	this.css= bw.ns4?this.el:this.el.style;
+	this.ref= bw.ns4?this.el.document:document;		
+	this.x= (bw.ns4||bw.opera5)?this.css.left:this.el.offsetLeft;
+	this.y= (bw.ns4||bw.opera5)?this.css.top:this.el.offsetTop;
+	this.h= (bw.ie||bw.ns6)?this.el.offsetHeight:bw.ns4?this.ref.height:bw.opera5?this.css.pixelHeight:0;
+    this.vis= b_vis;
+	this.hideIt= b_hideIt;
+    this.showIt= b_showIt;
+    this.moveIt= b_moveIt;
+	return this
+  }
+  //object methods...
+  function b_showIt(){this.css.visibility='visible'}
+  function b_hideIt(){this.css.visibility='hidden'}
+  function b_vis(){if(this.css.visibility=='hidden' || this.css.visibility=='HIDDEN' || this.css.visibility=='hide') return true;}
+  function b_moveIt(x,y){this.x=x; this.y=y; this.css.left=this.x+px; this.css.top=this.y+px}
+
+  
+  /************************************************************************************
+      This is the function that changes the sub menus to folded or unfolded state.
+  ************************************************************************************/
+  function menu(num){
+	if(bw.bw){
+		if (!stayFolded){
+			for (var i=0; i<oSub.length; i++){
+				if (i!=num){
+					oSub[i].hideIt()
+					if (foldImg)oTop[i].ref["imgA"+i].src = unImg.src
+				}
+			}
+			for(var i=1; i<oTop.length; i++){
+				oTop[i].moveIt(0,oTop[i-1].y+oTop[i-1].h)
+			}
+		}
+		if (oSub[num].vis()){
+			oSub[num].showIt()
+			if (foldImg)oTop[num].ref["imgA"+num].src = exImg.src
+		}else{
+			oSub[num].hideIt()
+			if(foldImg)oTop[num].ref["imgA"+num].src = unImg.src
+		}
+		for(var i=1; i<oTop.length; i++){ 
+			if (!oSub[i-1].vis()) oTop[i].moveIt(0,oTop[i-1].y+oTop[i-1].h+oSub[i-1].h+mainOffsetY) 
+			else oTop[i].moveIt(0,oTop[i-1].y+oTop[i-1].h+mainOffsetY)
+		}
+ 	}
+  }
+
+  /***********************************************************************
+    The init function... There should be no need to change anything here.
+  ***********************************************************************/
+  function initFoldout(){
+	//Fixing the browsercheck for opera... this can be removed if the browsercheck has been updated!!
+	bw.opera5 = (navigator.userAgent.indexOf("Opera")>-1 && document.getElementById)?true:false
+	if (bw.opera5) bw.ns6 = 0
+
+	oTop = new Array()
+	oSub = new Array()
+	//Making the objects and hiding the subs...
+	for (var i=0; i<FoldNumber; i++){
+		oTop[i] = new makeMenu('divTop'+i,'divCont')
+		oSub[i] = new makeMenu('divSub'+i,'divCont.document.divTop'+i)
+		oSub[i].hideIt()
+	}
+	
+	//Positioning the top objects...
+	oTop[0].moveIt(0,0)
+	for (var i=1; i<oTop.length; i++){
+		oTop[i].moveIt(0, oTop[i-1].y+oTop[i-1].h+mainOffsetY)
+	}
+	
+	//Making the containing menu object and showing it...
+	oCont = new makeMenu('divCont')
+	oCont.showIt()
+  }
+
+  // If the browser is ok, the script is started onload...
+  if(bw.bw) onload = initFoldout;
+  </script><!--     *****************************
+           *    START OPBOUW PAGINA    *
+           *****************************     -->
+
+
+  
+
+  <base target="main">
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+  
+  <script language="JavaScript" type="text/JavaScript">
+  
+  <!--
+  function MM_reloadPage(init) {     //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+  }
+  MM_reloadPage(true);
+  //-->
+  </script></head>
+
+<body bgproperties="fixed" leftmargin="0" topmargin="0" marginleft="0" style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); background-image: url(./images/Background_Japan2.jpg);" alink="#9999ff" link="#0000ee" marginheight="0" vlink="#0000ee">
+
+<div align="left">
+ <img alt="Genseiryu embleem NL, &copy; Genseiryu Nederland, met toestemming overgenomen, www.genseiryu.nl" src="./images/Genseiryu-embleem_NL.gif" onMouseOver="window.status='Genseiryu-embleem NL, © Genseiryu Nederland, met toestemming overgenomen, www.genseiryu.nl'; 
+  return true" onMouseOut="window.status='Genseiryu Karatedo Nederland'; return true" target="_top" height="180" width="175">
+</div>
+
+<br>
+
+
+
+<!-- DE VLAGGETJES -->
+<div align="right">
+<a href="main_nl.html"><img src="./images/Flag_NL.gif" alt="Dutch" border="0" height="20" width="30"></a>
+<a href="main_nl.html#English"><img src="./images/Flag_UK.gif" alt="English" border="0" height="20" width="30"></a>
+</div>
+
+
+
+<div id="divCont"> <!-- These are the contents of the foldoutmenu. -->
+
+<!-- STARTPAGINA -->
+<div id="divTop0" class="clTop">
+<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/main_nl.html" onClick="menu(0); return">Startpagina (home)</a><br>
+<div id="divSub0" class="clNoSub">
+</div>
+</div>
+
+<!-- Karate, wat is dat? -->
+<div id="divTop1" class="clTop">
+<a href="#" onClick="menu(1); return false" onFocus="this.blur()">Karate, wat is dat?</a><br>
+
+<div id="divSub1" class="clSub">
+	<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/karate.html">Wat is karate?</a><br>
+	<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/geschiedenis.html">Geschiedenis</a><br>
+</div>
+</div>
+
+
+<!-- Etiquette -->
+<div id="divTop2" class="clTop">
+<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/etiquette.html" onClick="menu(2); return">Etiquette</a><br>
+<div id="divSub2" class="clSub">
+	<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/etiquette.html#algemeen">Algemene regels</a><br>
+	<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/etiquette.html#seiza">Zitten in <i>'Seiza'</i></a><br>
+	<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/etiquette.html#obi">Knopen van de band</a><br>
+</div>
+</div>
+
+<!-- Japanse termen -->
+<div id="divTop3" class="clTop">
+<a href="terminologie.html" onClick="menu(3); return">Japanse termen</a><br>
+<div id="divSub3" class="clNoSub">
+</div>
+</div>
+
+<!-- Shihoo -->
+<i>
+<div id="divTop4" class="clTop">
+<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/shihoo/shihoo.html" onClick="menu(4); return">Shih&#333;</a><br>
+<div id="divSub4" class="clSub">
+	<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/shihoo/shihoo-tsuki-geri.html">Shih&#333; (Uke-)Tsuki-Geri</a><br>
+    <a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/shihoo/shihoo-tsuki-geri-godan-uke.html">Shih&#333; Tsuki-Geri Godan-uke</a><br>
+    <a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/shihoo/shihoo-nuki.html">Shih&#333; Nuki</a><br>
+</div>
+</div>
+</i>
+
+<!-- Kata --><i>
+<div id="divTop5" class="clTop">
+<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/kata/kata.html" onClick="menu(5); return">Kata</a><br>
+<div id="divSub5" class="clSub">
+	<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/kata/kata_gensei.html">Gensei Shodan</a><br>
+	<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/kata/kata_tenino.html">Ten-i no kata</a><br>
+	<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/kata/kata_chiino.html">Chi-i no kata</a><br>
+</div>
+</div>
+</i>
+
+<!-- Artikels --> 
+<div id="divTop6" class="clTop">
+<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/artikels.html" onClick="menu(6); return">
+Artikels en info</a><br>
+<div id="divSub6" class="clSub">
+ <a href="http://en.wikipedia.org/wiki/Genseiryu" target="0"><i>Genseiryu @ Wikipedia</i> <img src="./images/Flag_UK.gif" alt="In English!" border="0" height="12" width="18"></a><br>
+ <a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/artikels/ki-ai.html"><i>Ki-ai!</i> Niet zomaar schreeuw</a><br>
+ <a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/artikels/shihoo.html"><i>Shiho, Shihoo, Shih&#333; of Shio?</i></a><br>
+ <a href="http://www.wadokarate.co.uk/mokuso.htm">How to practise <i>mokuso</i></a><br>
+ <!-- <a href="http://www.fightingarts.com/forums/ubb/Forum1/HTML/002918.html" target=0>To <i>OSU</i> or not to <i>OSU</i></a><br>-->
+</div>
+</div>
+
+
+<!-- Nieuws -->
+<div id="divTop7" class="clTop">
+<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/nieuws.html" onClick="menu(7); return">Nieuws</a><br>
+<div id="divSub7" class="clNoSub">
+</div>
+</div>
+
+<!-- <img src="http://www.xs4all.nl/~mroering/images/Sign_New%21.gif" alt="NEW!" width=40> -->
+<!-- Foto-galerij -->
+  <div id="divTop8" class="clTop"> <a href="./gallery.html" onClick="menu(8); return">Foto-galerij 
+    (Pictures!)</a><br>
+<div id="divSub8" class="clSub">
+	<a href="galleries/gallery01.html">Sensei Seiken Shukumine</a><br>
+	<a href="galleries/gallery02.html">Genseiryu Nederland</a><br>
+	<a href="galleries/gallery03.html">Genseiryu Internationaal</a><br>
+    <a href="galleries/gallery04.html">Genseiryu Internationaal (2)</a><br>
+    <a href="galleries/gallery05.html">Amsterdam Open 2004</a><br>
+    <a href="galleries/gallery06.html">Celebration in Tokyo 2005</a><br>
+	<!-- <a href="underconstruction.html"><font color="#D30B0B">Meer karate-foto's</font></a><br>
+	<a href="underconstruction.html"><font color="#D30B0B">Leuke foto's en filmpjes</font></a><br> -->
+<!--	http://www.funakoshi.nl/pages/mpeg/karatechimp.mpeg-->
+</div>
+</div>
+
+<!-- Genseiryu Karatedo Netherlands -->
+<div id="divTop9" class="clTop">
+<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/KLM_Karateclub.html" onClick="menu(9); return">
+<font color="#ff680d">Genseiryu Netherlands</font></a><br>
+<div id="divSub9" class="clSub">
+	<a href="KLM_nieuws.html">Nieuwsberichten &amp; Foto's</a><br>
+	<a href="KLM_agenda.html">Agenda</a><br>
+</div>
+</div>
+
+<!-- Links -->
+<div id="divTop10" class="clTop">
+<a href="http://www.xs4all.nl/%7Emroering/gensei-ryu/links.html" onClick="menu(10); return">Links</a><br>
+<div id="divSub10" class="clNoSub">
+</div>
+</div>
+
+<!-- Gastenboek -->
+<div id="divTop11" class="clTop">
+<a href="http://www.tboek.nl/tboek/index.php?name=genseiryu" onClick="menu(11); return">Gastenboek</a><br>
+<div id="divSub11" class="clNoSub">
+</div>
+</div>
+
+<!-- Contact -->
+<div id="divTop12" class="clTop">
+<a href="http://home.versatel.nl/pcschram/klmkarateclub/www1_files/klmkarateclub_files/inhoud_contents_frame/bestuur_Nld.html" onClick="menu(12); return">Contact</a><br>
+<div id="divSub12" class="clNoSub">
+</div>
+</div>
+
+
+<!-- Het overige deel van het linker-frame! LET OP: Nummering van divTop en divSub!!! -->
+
+
+<div id="divTop13" class="clTop"><br>
+ <div align="center">
+<!--
+<font color="#D30B0B"><small>Rood = nog in aanbouw!<br>
+   <small>(Dus nog niet beschikbaar!)</small></small></font><br><br><br>
+-->
+
+<img alt="Karate in Kanji" src="./images/Kanji_Kara-Te_modern.gif" border="0" height="160" width="60">
+</div>
+<br>
+<br>
+<br>                    
+<div align="center"><small>Webmaster: 
+<a href="mailto:gensei-ryu_Verwijder_dit-tot_je_alleen_%27gensei-ryu%27_overhoudt.@xs4all.nl">Mario<i>R</i></a></small><br><br>
+</div>
+<br>
+
+<div id="divSub13" class="clNoSub">
+</div>
+</div>
+
+</div>
+
+
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<title></title>
+<meta content="Mario Roering" name="author">
+<br>
+
+<br>
+</body></html>
